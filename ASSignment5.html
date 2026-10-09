@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E. Mismitha | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #0b1120;
+            --card: #141e32;
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text: #f1f5f9;
+            --muted: #a8b4c8;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 17, 32, 0.95);
+            border-bottom: 1px solid #26334b;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 24px;
+            scroll-margin-top: 65px;
+        }
+
+        .hero {
+            min-height: 83vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            color: var(--primary);
+            background: #102b40;
+            padding: 7px 15px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        h1 span, h2 span {
+            color: var(--primary);
+        }
+
+        .hero p, .about-text, .contact-text {
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 23px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #07111e;
+        }
+
+        .btn-outline {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .profile-circle {
+            flex-shrink: 0;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 75px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            box-shadow: 0 0 55px #38bdf830;
+            border: 5px solid #263c5c;
+        }
+
+        .section-title {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        .about-grid, .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 26px;
+            border: 1px solid #26334b;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: var(--muted);
+        }
+
+        .icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            background: #172941;
+            color: #bceaff;
+            border: 1px solid #294968;
+            padding: 9px 16px;
+            border-radius: 8px;
+        }
+
+        .education-card {
+            border-left: 4px solid var(--primary);
+        }
+
+        .education-card .year {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        .contact-card {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--muted);
+            border-top: 1px solid #26334b;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                justify-content: center;
+                text-align: center;
+                padding-top: 55px;
+            }
+
+            .profile-circle {
+                width: 190px;
+                height: 190px;
+                font-size: 55px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about-grid, .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">E.M.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">B.Tech Student | CSE (AI & ML)</div>
+
+            <h1>Hello, I'm<br><span>E. Mismitha</span></h1>
+
+            <p>
+                A Computer Science and Engineering student at Sandip University,
+                interested in technology, programming, artificial intelligence,
+                and machine learning.
+            </p>
+
+            <div class="buttons">
+                <a href="#about" class="btn btn-primary">Explore My Portfolio</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+
+        <div class="profile-circle" aria-label="E. Mismitha initials">
+            EM
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <p class="section-subtitle">Get to know me</p>
+
+        <div class="about-grid">
+            <div class="card">
+                <div class="icon">👩‍🎓</div>
+                <h3>Who I Am</h3>
+                <p class="about-text">
+                    My name is E. Mismitha. I am pursuing B.Tech in Computer
+                    Science and Engineering with a specialization in Artificial
+                    Intelligence and Machine Learning at Sandip University.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>My Goal</h3>
+                <p class="about-text">
+                    My goal is to strengthen my technical knowledge, develop
+                    practical programming skills, explore AI and ML, and create
+                    useful technology-based solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <h2 class="section-title">My <span>Education</span></h2>
+        <p class="section-subtitle">My academic journey</p>
+
+        <div class="card education-card">
+            <div class="icon">🎓</div>
+            <h3>Bachelor of Technology (B.Tech)</h3>
+            <p>Computer Science and Engineering</p>
+            <p>Specialization: Artificial Intelligence and Machine Learning</p>
+            <p><strong>University:</strong> Sandip University</p>
+            <p class="year">Currently Pursuing</p>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <p class="section-subtitle">
+            Areas to learn and develop throughout my academic journey
+        </p>
+
+        <div class="card">
+            <div class="skill-list">
+                <span class="skill">C Programming</span>
+                <span class="skill">C++</span>
+                <span class="skill">Python</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Artificial Intelligence</span>
+                <span class="skill">Machine Learning</span>
+                <span class="skill">Problem Solving</span>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 14px;">
+                Edit this list to include only the skills you have learned
+                or are currently studying.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <p class="section-subtitle">
+            Project ideas you can replace with your completed work
+        </p>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Personal Portfolio Website</h3>
+                <p>
+                    A personal website created using HTML and CSS to present
+                    my education, skills, interests, and projects.
+                </p>
+                <p style="margin-top: 12px;">Technologies: HTML, CSS</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🤖</div>
+                <h3>AI and ML Project</h3>
+                <p>
+                    A placeholder for a future artificial intelligence or
+                    machine learning project that demonstrates programming
+                    and data analysis skills.
+                </p>
+                <p style="margin-top: 12px;">Technologies: Python, AI/ML</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2 class="section-title">Contact <span>Me</span></h2>
+        <p class="section-subtitle">
+            Let's connect and explore opportunities to learn and grow.
+        </p>
+
+        <div class="card contact-card">
+            <div class="icon">✉️</div>
+            <h3>Get in Touch</h3>
+            <p class="contact-text">
+                Interested in collaborating or connecting? Add your
+                professional contact details below.
+            </p>
+
+            <!-- Replace with your actual email -->
+            <p style="margin-top: 20px;">
+                <strong>Email:</strong> Add your email address
+            </p>
+
+            <!-- Replace # with your LinkedIn profile URL -->
+            <div class="buttons" style="justify-content: center;">
+                <a href="mailto:your-email@example.com"
+                   class="btn btn-primary">Email Me</a>
+
+                <a href="#home"
+                   class="btn btn-outline">Back to Top</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© <span id="year"></span> E. Mismitha | Personal Portfolio</p>
+    <p>Sandip University · B.Tech CSE (AI & ML)</p>
+</footer>
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
